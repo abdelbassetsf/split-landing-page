@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+:root {
+  --left-bg-color: rgba(0, 0, 0, 0.4);
+  --right-bg-color: rgba(14, 68, 119, 0.4);
+  --left-btn-hover-color: rgba(22, 69, 170, 1);
+  --right-btn-hover-color: #303030;
+  --hover-width: 75%;
+  --other-hover: 25%;
+  --transition-speed: 1000ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3.5rem;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%);
+  white-space: nowrap;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.container {
+  overflow: hidden;
+  display: flex;
+  height: 100vh;
+  background: #333;
+  position: relative;
+}
+
+.btn {
+  position: absolute;
+  border: 2px solid #fff;
+  padding: 1.3rem;
+  font-size: 1rem;
+  width: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.split.left .btn:hover {
+  background: var(--left-btn-hover-color);
+  border-color: var(--left-btn-hover-color);
+}
+
+.split.right .btn:hover {
+  background: var(--right-btn-hover-color);
+  border-color: var(--right-btn-hover-color);
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  justify-content: center;
+  color: #fff;
+  position: absolute;
+  overflow-x: hidden;
+}
+
+.split.left,
+.split.right,
+.split.left::before,
+.split.right::before {
+  transition: all var(--transition-speed) cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.split.left {
+  background: url('./img/ps5.jpg') no-repeat top 50% center/cover;
+  left: 0;
+}
+
+.split.right {
+  background: url('./img/xbox.jpg') no-repeat center left 60% / cover;
+  right: 0;
+}
+
+.split.left::before,
+.split.right::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.split.left::before {
+  background: var(--right-bg-color);
+}
+
+.split.right::before {
+  background: var(--left-bg-color);
+}
+
+.hover-left .left {
+  width: var(--hover-width);
+}
+
+.hover-left .right {
+  width: var(--other-hover);
+}
+
+.hover-right .right {
+  width: var(--hover-width);
+}
+
+.hover-right .left {
+  width: var(--other-hover);
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+    top: 30%;
+  }
+
+  .btn {
+    width: 12.5rem;
+    padding: 0.9rem;
+  }
+
+  .split.right {
+    background-position: 30% 40%;
+  }
+}
